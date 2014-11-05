@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>flux for angular</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/src/css/main.css"/>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="/flux-lib/dispatcher.js"></script>
+    <script src="/src/lib/dispatcher.js"></script>
     <script src="/src/lib/events.js"></script>
     <script src="/src/lib/object-assign.js"></script>
 
@@ -17,11 +18,21 @@
     <script src="/src/js/dispatcher/AppDispatcher.js"></script>
     <script src="/src/js/store/todoStore.js"></script>
     <!-- endinject -->
-    <script src="/src/js/controllers/appCtrl.js"></script>
+    <script src="/src/js/controllers/todo.js"></script>
 </head>
 <body ng-app="app">
-<div ng-controller="TodoCtrl">
-    <h3>{{title}}</h3>
+<div ng-controller="Todo as todo" class="container">
+    <h3>{{ todo.title }}</h3>
+
+    <form class="form-inline">
+        <div class="form-group">
+            <input type="text" placeholder="请输入todo" ng-model="todo.input"/>
+            <button ng-click="todo.create(todo.input)">添加</button>
+        </div>
+    </form>
+    <ul class="list-unstyled list">
+        <li ng-repeat="item in todo.todoList">{{item.text}} <span ng-click="todo.remove(item)">X</span></li>
+    </ul>
 </div>
 </body>
 </html>

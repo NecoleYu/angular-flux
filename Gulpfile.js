@@ -10,7 +10,7 @@ gulp.task('clean', function () {
 
 
 gulp.task('scripts', ['clean'], function () {
-    return gulp.src("app/flux-lib/*.js")
+    return gulp.src("app/src/lib/*.js")
         .pipe($.ngAnnotate())
         .pipe($.uglify())
         .pipe($.concat("angular-flux.js"))

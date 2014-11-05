@@ -1,0 +1,20 @@
+.container {
+    margin: 30px;
+}
+
+.list li {
+    height: 30px;
+    line-height: 30px;
+    background: powderblue;
+    padding: 0 10px;
+}
+
+.list li span {
+    float: right;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    margin-right: -10px;
+    font-weight: 300%;
+    cursor: pointer;
+}

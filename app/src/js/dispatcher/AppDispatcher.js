@@ -8,7 +8,6 @@ angular.module("app").factory("AppDispatcher", ["Dispatcher", "Assign", function
          * @param  {object} action The data coming from the view.
          */
         handleViewAction: function (action) {
-            debugger;
             this.dispatch({
                 source: 'VIEW_ACTION',
                 action: action
