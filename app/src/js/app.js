@@ -1,0 +1,1 @@
+angular.module("app", ["angular.flux", "object.assign", "events"]);
