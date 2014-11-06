@@ -1,4 +1,4 @@
-angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events", "todoActionsConstant", "todoEventsConstant", function (AppDispatcher, assign, events, todoActionsConstant, todoEventsConstant) {
+angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events", "todoActionsConstant", "todoEventsConstant", "$timeout", "$q", function (AppDispatcher, assign, events, todoActionsConstant, todoEventsConstant, $timeout, $q) {
 
 
     var _todos = {};
@@ -19,6 +19,14 @@ angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events",
         };
     }
 
+    function getAll() {
+        var deferred = $q.defer();
+        $timeout(function () {
+            deferred.resolve(_todos);
+        }, 2000);
+        return deferred.promise;
+    }
+
     /**
      * Delete a TODO item.
      * @param  {string} id
@@ -27,11 +35,12 @@ angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events",
         delete _todos[id];
     }
 
+    //add test data
+    create("example");
+
     var TodoStore = assign({}, EventEmitter.prototype, {
 
-        getAll: function () {
-            return _todos;
-        },
+        getAll: getAll,
 
         emitChange: function () {
             this.emit(CHANGE_EVENT);
