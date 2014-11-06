@@ -1,0 +1,13 @@
+<div ng-controller="Todo as todo" class="container">
+    <h3>{{ todo.title }}</h3>
+
+    <form class="form-inline">
+        <div class="form-group">
+            <input type="text" placeholder="增加新的备忘录" ng-model="todo.input"/>
+            <button ng-click="todo.create(todo.input)">添加</button>
+        </div>
+    </form>
+    <ul class="list-unstyled list">
+        <li ng-repeat="item in todo.todoList"><a ui-sref="editItem({todoId:item.id})">{{item.text}}</span><a><span ng-click="todo.remove(item)">X</span></li>
+    </ul>
+</div>

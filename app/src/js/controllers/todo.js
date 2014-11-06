@@ -21,7 +21,7 @@
         self.todoList = TodoStore.getAll();
 
         TodoStore.addChangeListener(function () {
-            console.log("changed");
+            console.log("changed from index");
         });
     }
 })();

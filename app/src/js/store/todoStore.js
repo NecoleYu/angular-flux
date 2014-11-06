@@ -1,8 +1,9 @@
-angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events", "todoConstants", function (AppDispatcher, assign, events, todoConstants) {
+angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events", "todoActionsConstant", "todoEventsConstant", function (AppDispatcher, assign, events, todoActionsConstant, todoEventsConstant) {
 
 
     var _todos = {};
-    var CHANGE_EVENT = 'change';
+    var CHANGE_EVENT = todoEventsConstant.LIST_CHANGE;
+    var current_source = "LIST_ACTION";
     var EventEmitter = events.EventEmitter;
 
     /**
@@ -49,20 +50,22 @@ angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events",
         var action = payload.action;
         var text;
 
-        switch (action.actionType) {
-            case todoConstants.TODO_CREATE:
-                text = action.text.trim();
-                if (text !== '') {
-                    create(text);
-                }
-                break;
-            case todoConstants.TODO_DESTROY:
-                destroy(action.id);
-                break;
-            default:
-                return true;
+        if (payload.source == current_source) {
+            switch (action.actionType) {
+                case todoActionsConstant.TODO_CREATE:
+                    text = action.text.trim();
+                    if (text !== '') {
+                        create(text);
+                    }
+                    break;
+                case todoActionsConstant.TODO_DESTROY:
+                    destroy(action.id);
+                    break;
+                default:
+                    return true;
+            }
+            TodoStore.emitChange();
         }
-        TodoStore.emitChange();
         return true;
     });
 

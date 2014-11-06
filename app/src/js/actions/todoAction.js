@@ -1,4 +1,6 @@
-angular.module("app").factory("TodoAction", ["todoConstants", "AppDispatcher", function (todoConstants, AppDispatcher) {
+angular.module("app").factory("TodoAction", ["todoActionsConstant", "AppDispatcher", function (todoActionsConstant, AppDispatcher) {
+
+    var source = "LIST_ACTION";
 
     return  {
 
@@ -6,8 +8,8 @@ angular.module("app").factory("TodoAction", ["todoConstants", "AppDispatcher", f
          * @param  {string} text
          */
         create: function (text) {
-            AppDispatcher.handleViewAction({
-                actionType: todoConstants.TODO_CREATE,
+            AppDispatcher.handleViewAction(source, {
+                actionType: todoActionsConstant.TODO_CREATE,
                 text: text
             });
         },
@@ -16,8 +18,8 @@ angular.module("app").factory("TodoAction", ["todoConstants", "AppDispatcher", f
          * @param  {string} id
          */
         destroy: function (id) {
-            AppDispatcher.handleViewAction({
-                actionType: todoConstants.TODO_DESTROY,
+            AppDispatcher.handleViewAction(source, {
+                actionType: todoActionsConstant.TODO_DESTROY,
                 id: id
             });
         }

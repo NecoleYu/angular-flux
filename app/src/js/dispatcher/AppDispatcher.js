@@ -7,9 +7,9 @@ angular.module("app").factory("AppDispatcher", ["Dispatcher", "Assign", function
          * as a view action.  Another variant here could be handleServerAction.
          * @param  {object} action The data coming from the view.
          */
-        handleViewAction: function (action) {
+        handleViewAction: function (source, action) {
             this.dispatch({
-                source: 'VIEW_ACTION',
+                source: source,
                 action: action
             });
         }

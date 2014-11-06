@@ -1,4 +1,4 @@
-angular.module("app").constant("todoConstants",{
+angular.module("app").constant("todoActionsConstant",{
     TODO_CREATE: "TODO_CREATE",
     TODO_COMPLETE: "TODO_COMPLETE",
     TODO_DESTROY: "TODO_DESTROY",
