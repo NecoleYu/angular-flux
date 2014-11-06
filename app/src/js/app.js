@@ -13,13 +13,11 @@ angular.module("app", ["ui.router", "angular.flux", "object.assign", "events"])
         $stateProvider
             .state('list', {
                 url: '/',
-                templateUrl: '/src/views/list.html',
-                controller: "Todo"
+                templateUrl: '/src/views/list.html'
             })
             .state('editItem', {
                 url: '/:todoId',
-                templateUrl: '/src/views/edit.html',
-                controller: "Edit"
+                templateUrl: '/src/views/edit.html'
             });
 
     }]);

@@ -20,7 +20,7 @@ gulp.task('scripts', ['clean'], function () {
 
 gulp.task('inject', function () {
     gulp.src("app/index.html")
-        .pipe($.inject(gulp.src(["app/src/js/*.js", "app/src/js/**/*.js", "!app/src/js/controllers/appCtrl.js"], {read: false}),{
+        .pipe($.inject(gulp.src(["app/src/js/*.js", "app/src/js/**/*.js", "!app/src/js/controllers/*.js"], {read: false}),{
             ignorePath: 'app'
         }))
         .pipe(gulp.dest("build"))

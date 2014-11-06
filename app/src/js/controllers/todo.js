@@ -1,9 +1,9 @@
 (function () {
     angular.module("app").controller("Todo", TodoCtrl);
 
-    TodoCtrl.$inject = ["TodoStore", "TodoAction"];
+    TodoCtrl.$inject = ["TodoStore", "TodoAction", "$scope"];
 
-    function TodoCtrl(TodoStore, TodoAction) {
+    function TodoCtrl(TodoStore, TodoAction, $scope) {
         /* jshint validthis: true */
         var self = this;
         self.input = "";
@@ -20,7 +20,9 @@
 
         self.todoList = TodoStore.getAll();
 
+
         TodoStore.addChangeListener(function () {
+            console.log(self.todoList);
             console.log("changed from index");
         });
     }
