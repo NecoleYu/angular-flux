@@ -19,10 +19,12 @@ angular.module("app").factory("EditStore", ["AppDispatcher", "Assign", "Events",
             complete: false,
             text: text
         };
+        console.log(_todos);
     }
 
     var EditStore = assign({}, EventEmitter.prototype, {
         get: function (id) {
+            console.log(_todos);
             return _todos[id];
         },
 
