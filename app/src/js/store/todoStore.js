@@ -27,6 +27,11 @@ angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events",
         return deferred.promise;
     }
 
+    
+    function getTodos() {
+        return _todos;
+    }
+    
     /**
      * Delete a TODO item.
      * @param  {string} id
@@ -41,6 +46,8 @@ angular.module("app").factory("TodoStore", ["AppDispatcher", "Assign", "Events",
     var TodoStore = assign({}, EventEmitter.prototype, {
 
         getAll: getAll,
+        
+        getTodos: getTodos,
 
         emitChange: function () {
             this.emit(CHANGE_EVENT);
