@@ -1,4 +1,4 @@
-angular.module("app", ["ui.router", "angular.flux", "object.assign", "events"])
+angular.module("app", ["ui.router", "angular.flux", "object.assign", "events", "pascalprecht.translate"])
     .run(
     ["$rootScope", "$state", "$stateParams",
         function ($rootScope, $state, $stateParams) {

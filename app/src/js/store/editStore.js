@@ -6,8 +6,7 @@ angular.module("app").factory("EditStore", ["AppDispatcher", "Assign", "Events",
     var current_source = "EDIT_ACTION";
     var EventEmitter = events.EventEmitter;
 
-    //同步数据
-    _todos = TodoStore.getAll();
+     _todos = TodoStore.getTodos();
 
     /**
      * edit a TODO item.
@@ -23,6 +22,8 @@ angular.module("app").factory("EditStore", ["AppDispatcher", "Assign", "Events",
 
     var EditStore = assign({}, EventEmitter.prototype, {
         get: function (id) {
+            
+            console.log(_todos);
             return _todos[id];
         },
 
